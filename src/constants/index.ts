@@ -1,4 +1,3 @@
-import { li } from "framer-motion/client";
 import {
   backend1,
   web1,
@@ -13,11 +12,6 @@ import {
   mongodb,
   git,
   figma,
-  docker,
-  carrent,
-  jobit,
-  tripguide,
-  threejs,
   mobile1,
   fullstack,
   api,
@@ -27,7 +21,6 @@ import {
   freelance,
   mysql,
   shadcn,
-  materialUI,
   bootstrap,
   sass,
   badrShop,

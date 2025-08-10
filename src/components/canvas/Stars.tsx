@@ -12,7 +12,7 @@ const Stars = (props: React.ComponentProps<typeof Points>) => {
     radius: 1.2,
   }) as Float32Array;
 
-  useFrame((state, delta) => {
+  useFrame((__, delta) => {
     if (ref.current) {
       ref.current.rotation.x -= delta / 10;
       ref.current.rotation.y -= delta / 15;
