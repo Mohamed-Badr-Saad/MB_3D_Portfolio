@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "noEmitOnError": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "noUnusedLocals": false,       // ignore unused variables
+    "noUnusedParameters": false,   // ignore unused function params
+    "skipLibCheck": true,          // skip type checking of dependencies
+    "forceConsistentCasingInFileNames": true
   },
   "files": [],
   "references": [
