@@ -1,8 +1,10 @@
+import { easeOut, type Variants } from "framer-motion";
+
 // types for direction and motion types
 type Direction = "left" | "right" | "up" | "down";
 type MotionType = "tween" | "spring" | "inertia";
 
-export const textVariant = (delay: number) => {
+export const textVariant = (delay: number): Variants => {
   return {
     hidden: {
       y: -50,
@@ -25,7 +27,7 @@ export const fadeIn = (
   type: MotionType,
   delay: number,
   duration: number
-) => {
+): Variants => {
   return {
     hidden: {
       x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
@@ -37,16 +39,15 @@ export const fadeIn = (
       y: 0,
       opacity: 1,
       transition: {
-        type: type,
-        delay: delay,
-        duration: duration,
-        ease: "easeOut",
+        type,
+        delay,
+        duration,
+        ease: easeOut // cast here
       },
     },
   };
 };
-
-export const zoomIn = (delay: number, duration: number) => {
+export const zoomIn = (delay: number, duration: number): Variants => {
   return {
     hidden: {
       scale: 0,
@@ -59,7 +60,7 @@ export const zoomIn = (delay: number, duration: number) => {
         type: "tween" as const,
         delay: delay,
         duration: duration,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -70,7 +71,7 @@ export const slideIn = (
   type: MotionType,
   delay: number,
   duration: number
-) => {
+): Variants => {
   return {
     hidden: {
       x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
@@ -83,7 +84,7 @@ export const slideIn = (
         type: type,
         delay: delay,
         duration: duration,
-        ease: "easeOut",
+        ease: easeOut, // cast here
       },
     },
   };
@@ -92,7 +93,7 @@ export const slideIn = (
 export const staggerContainer = (
   staggerChildren: number,
   delayChildren: number = 0
-) => {
+): Variants => {
   return {
     hidden: {},
     show: {

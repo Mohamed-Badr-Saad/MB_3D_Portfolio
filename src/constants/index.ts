@@ -257,7 +257,7 @@ const projects = [
     ],
     image: nutrition,
     source_code_link: "https://github.com/Mohamed-Badr-Saad/nutrition-system",
-    live_link:null
+    live_link:""
   },
   {
     name: "Metering Best Match Finder",
