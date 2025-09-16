@@ -4,11 +4,12 @@ import {
   Decal,
   Float,
   useTexture,
-  OrbitControls,
   Preload,
 } from "@react-three/drei";
 import CanvasLoader from "../Loader";
-const Ball = ({ imgUrl }: { imgUrl: string }) => {
+
+// Standalone Ball compo nent (no Canvas wrapper)
+export const Ball = ({ imgUrl }: { imgUrl: string }) => {
   const [decal] = useTexture([imgUrl]);
 
   return (
@@ -26,6 +27,7 @@ const Ball = ({ imgUrl }: { imgUrl: string }) => {
         <Decal
           position={[0, 0, 1]}
           rotation={[2 * Math.PI, 0, 6.25]}
+          scale={1}
           map={decal}
         />
       </mesh>
@@ -33,10 +35,11 @@ const Ball = ({ imgUrl }: { imgUrl: string }) => {
   );
 };
 
+// Original BallCanvas (keep for backward compatibility)
 const BallCanvas = ({ icon }: { icon: string }) => {
   return (
     <Canvas
-      frameloop="always"
+      frameloop="demand"
       gl={{ preserveDrawingBuffer: true }}
       onCreated={({ gl }) => {
         gl.getContext().canvas.addEventListener("webglcontextlost", (e) => {
@@ -46,13 +49,11 @@ const BallCanvas = ({ icon }: { icon: string }) => {
       }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
         <Ball imgUrl={icon} />
+        <Preload all />
       </Suspense>
-
-      <Preload all />
-      {/**preload is used to load the model in the background */}
     </Canvas>
   );
 };
+
 export default BallCanvas;

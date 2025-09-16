@@ -133,6 +133,12 @@ const technologies = [
     name: "figma",
     icon: figma,
   },
+  { name: "RESTful API",
+    icon: api,
+  },
+  { name: "Embedded Systems",
+    icon: Embedded,
+  },
 ];
 
 const experiences = [
