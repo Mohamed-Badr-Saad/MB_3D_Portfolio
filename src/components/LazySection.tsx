@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useEffect } from 'react';
+import {  Suspense, useState, useEffect } from 'react';
 import CanvasLoader from './Loader';
 
 interface LazySectionProps {

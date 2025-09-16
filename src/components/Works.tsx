@@ -1,5 +1,3 @@
-// Update Works.tsx for better mobile performance
-import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { github } from "../assets";
@@ -112,4 +110,5 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "work");
+const WrappedWorks = SectionWrapper(Works, "works");
+export default WrappedWorks;
