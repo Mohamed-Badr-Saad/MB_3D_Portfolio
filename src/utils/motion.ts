@@ -22,16 +22,13 @@ export const textVariant = (delay: number): Variants => {
   };
 };
 
-export const fadeIn = (
-  direction: Direction,
-  type: MotionType,
-  delay: number,
-  duration: number
-): Variants => {
+export const fadeIn = (direction: string, type: string, delay: number, duration: number) => {
+  const isMobile = window.innerWidth <= 768;
+  
   return {
     hidden: {
-      x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
-      y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+      x: direction === "left" ? (isMobile ? -50 : -100) : direction === "right" ? (isMobile ? 50 : 100) : 0,
+      y: direction === "up" ? (isMobile ? -50 : -100) : direction === "down" ? (isMobile ? 50 : 100) : 0,
       opacity: 0,
     },
     show: {
@@ -39,14 +36,29 @@ export const fadeIn = (
       y: 0,
       opacity: 1,
       transition: {
-        type,
-        delay,
-        duration,
-        ease: easeOut // cast here
+        type: type,
+        delay: isMobile ? delay * 0.5 : delay, // Faster on mobile
+        duration: isMobile ? duration * 0.7 : duration, // Shorter duration on mobile
+        ease: "easeOut",
       },
     },
   };
 };
+
+export const staggerContainer = (staggerChildren: number, delayChildren: number) => {
+  const isMobile = window.innerWidth <= 768;
+  
+  return {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: isMobile ? staggerChildren * 0.5 : staggerChildren,
+        delayChildren: isMobile ? delayChildren * 0.5 : delayChildren,
+      },
+    },
+  };
+};
+
 export const zoomIn = (delay: number, duration: number): Variants => {
   return {
     hidden: {
@@ -90,17 +102,3 @@ export const slideIn = (
   };
 };
 
-export const staggerContainer = (
-  staggerChildren: number,
-  delayChildren: number = 0
-): Variants => {
-  return {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: staggerChildren,
-        delayChildren: delayChildren,
-      },
-    },
-  };
-};

@@ -9,8 +9,27 @@ import {
   Tech,
   Works,
 } from "./components";
+import { useEffect } from "react";
 
 function App() {
+  // Add to your main App component
+useEffect(() => {
+  // Performance monitoring for mobile
+  if (window.innerWidth <= 768) {
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        if (entry.entryType === 'measure') {
+          console.log(`${entry.name}: ${entry.duration}ms`);
+        }
+      }
+    });
+    
+    observer.observe({ entryTypes: ['measure'] });
+    
+    return () => observer.disconnect();
+  }
+}, []);
+
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary">
