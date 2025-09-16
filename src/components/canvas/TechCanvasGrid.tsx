@@ -40,7 +40,6 @@ const TechBall = ({
             map={decal}
           />
         </mesh>
-        
       </Float>
     </group>
   );
@@ -85,13 +84,16 @@ const RotatingTechGroup = ({
 
     const time = clock.elapsedTime;
 
-    groupRef.current.rotation.x = config.maxAngleX * Math.sin(time * config.speedX);
-    groupRef.current.rotation.y = config.maxAngleY * Math.sin(time * config.speedY);
-    groupRef.current.rotation.z = config.maxAngleZ * Math.sin(time * config.speedZ);
+    groupRef.current.rotation.x =
+      config.maxAngleX * Math.sin(time * config.speedX);
+    groupRef.current.rotation.y =
+      config.maxAngleY * Math.sin(time * config.speedY);
+    groupRef.current.rotation.z =
+      config.maxAngleZ * Math.sin(time * config.speedZ);
   });
 
   return (
-    <group 
+    <group
       ref={groupRef}
       position={[0, isMobile ? 2 : 0, 0]} // Move the entire group up on mobile
     >
@@ -133,7 +135,7 @@ const TechCanvasGrid = ({
   }, []);
 
   return (
-    <div className={`w-full ${isMobile ? 'h-[700px]' : 'h-[500px]'}`}>
+    <div className={`w-full ${isMobile ? "h-[700px]" : "h-[500px]"}`}>
       <Canvas
         frameloop="always"
         gl={{ preserveDrawingBuffer: true }}
@@ -142,16 +144,25 @@ const TechCanvasGrid = ({
           fov: isMobile ? 60 : 50, // Wider field of view for mobile
         }}
         style={{
-          width: '100%',
-          height: '100%', // Canvas fills container but models stay same size
+          touchAction: isMobile ? "pan-y" : "auto", // Allow vertical scrolling on mobile
+          pointerEvents: isMobile ? "none" : "auto", // Disable pointer events on mobile
+          width: "100%",
+          height: "100%", // Canvas fills container but models stay same size
+        }}
+        onCreated={({ gl }) => {
+          // Disable touch events on mobile
+          if (isMobile) {
+            gl.domElement.style.touchAction = "pan-y";
+            gl.domElement.style.pointerEvents = "none";
+          }
         }}
       >
         <Suspense fallback={<CanvasLoader />}>
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
 
-          <RotatingTechGroup 
-            technologies={technologies} 
+          <RotatingTechGroup
+            technologies={technologies}
             columns={columns}
             isMobile={isMobile} // Pass isMobile to adjust positioning
           />
@@ -159,7 +170,7 @@ const TechCanvasGrid = ({
           <OrbitControls
             enableZoom={false}
             enablePan={false}
-            enableRotate={isMobile? false : true} // Disable rotation on mobile
+            enableRotate={isMobile ? false : true} // Disable rotation on mobile
             autoRotate={false}
             autoRotateSpeed={0}
           />
@@ -169,6 +180,5 @@ const TechCanvasGrid = ({
     </div>
   );
 };
-
 
 export default TechCanvasGrid;
