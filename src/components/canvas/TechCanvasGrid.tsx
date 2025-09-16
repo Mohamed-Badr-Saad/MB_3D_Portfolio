@@ -159,7 +159,7 @@ const TechCanvasGrid = ({
           <OrbitControls
             enableZoom={false}
             enablePan={false}
-            enableRotate={true}
+            enableRotate={isMobile? false : true} // Disable rotation on mobile
             autoRotate={false}
             autoRotateSpeed={0}
           />
