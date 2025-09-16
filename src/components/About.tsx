@@ -1,4 +1,3 @@
-// Update About.tsx
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
@@ -7,7 +6,15 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 import { useState, useEffect } from "react";
 
-const ServiceCard = ({ index, title, icon }: { index: number; title: string; icon: string }) => {
+const ServiceCard = ({ 
+  index, 
+  title, 
+  icon 
+}: { 
+  index: number; 
+  title: string; 
+  icon: string; 
+}) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -18,9 +25,9 @@ const ServiceCard = ({ index, title, icon }: { index: number; title: string; ico
     <Tilt 
       className="xs:w-[250px] w-full"
       options={{
-        max: isMobile ? 15 : 25, // Reduce tilt on mobile
-        scale: isMobile ? 1.02 : 1.1, // Reduce scale on mobile
-        speed: isMobile ? 200 : 450, // Slower animation on mobile
+        max: isMobile ? 15 : 25,
+        scale: isMobile ? 1.02 : 1.1,
+        speed: isMobile ? 200 : 450,
       }}
     >
       <motion.div
@@ -32,9 +39,8 @@ const ServiceCard = ({ index, title, icon }: { index: number; title: string; ico
             src={icon}
             alt="web-development"
             className="w-16 h-16 object-contain"
-            loading="lazy" // Add lazy loading
+            loading="lazy"
           />
-
           <h3 className="text-white text-[20px] font-bold text-center">
             {title}
           </h3>
@@ -47,13 +53,13 @@ const ServiceCard = ({ index, title, icon }: { index: number; title: string; ico
 const About = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div variants={textVariant(0.1)}>
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
 
       <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
+        variants={fadeIn("", "spring", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
         I'm a skilled software developer with experience in TypeScript and
@@ -72,4 +78,7 @@ const About = () => {
   );
 };
 
-export default SectionWrapper(About, "about");
+
+
+const WrappedAbout = SectionWrapper(About, "about");
+export default WrappedAbout;

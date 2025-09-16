@@ -4,7 +4,7 @@ import { easeOut, type Variants } from "framer-motion";
 type Direction = "left" | "right" | "up" | "down";
 type MotionType = "tween" | "spring" | "inertia";
 
-export const textVariant = (delay: number): Variants => {
+export const textVariant = (delay: number = 0): Variants => {
   return {
     hidden: {
       y: -50,
@@ -22,13 +22,37 @@ export const textVariant = (delay: number): Variants => {
   };
 };
 
-export const fadeIn = (direction: string, type: string, delay: number, duration: number) => {
-  const isMobile = window.innerWidth <= 768;
-  
+export const fadeIn = (
+  direction: string,
+  type: MotionType,
+  delay: number,
+  duration: number
+): Variants => {
+  const isMobile =
+    typeof window !== "undefined" ? window.innerWidth <= 768 : false;
+
   return {
     hidden: {
-      x: direction === "left" ? (isMobile ? -50 : -100) : direction === "right" ? (isMobile ? 50 : 100) : 0,
-      y: direction === "up" ? (isMobile ? -50 : -100) : direction === "down" ? (isMobile ? 50 : 100) : 0,
+      x:
+        direction === "left"
+          ? isMobile
+            ? -50
+            : -100
+          : direction === "right"
+          ? isMobile
+            ? 50
+            : 100
+          : 0,
+      y:
+        direction === "up"
+          ? isMobile
+            ? -50
+            : -100
+          : direction === "down"
+          ? isMobile
+            ? 50
+            : 100
+          : 0,
       opacity: 0,
     },
     show: {
@@ -37,17 +61,21 @@ export const fadeIn = (direction: string, type: string, delay: number, duration:
       opacity: 1,
       transition: {
         type: type,
-        delay: isMobile ? delay * 0.5 : delay, // Faster on mobile
-        duration: isMobile ? duration * 0.7 : duration, // Shorter duration on mobile
+        delay: isMobile ? delay * 0.5 : delay,
+        duration: isMobile ? duration * 0.7 : duration,
         ease: "easeOut",
       },
     },
   };
 };
 
-export const staggerContainer = (staggerChildren: number, delayChildren: number) => {
-  const isMobile = window.innerWidth <= 768;
-  
+export const staggerContainer = (
+  staggerChildren: number = 0.1,
+  delayChildren: number = 0
+): Variants => {
+  const isMobile =
+    typeof window !== "undefined" ? window.innerWidth <= 768 : false;
+
   return {
     hidden: {},
     show: {
@@ -96,9 +124,8 @@ export const slideIn = (
         type: type,
         delay: delay,
         duration: duration,
-        ease: easeOut, // cast here
+        ease: easeOut,
       },
     },
   };
 };
-
