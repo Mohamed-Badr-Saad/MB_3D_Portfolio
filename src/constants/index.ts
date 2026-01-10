@@ -280,7 +280,7 @@ const projects = [
     image: bestMatchFinder,
     source_code_link:
       "https://github.com/Mohamed-Badr-Saad/Metering-Best-Match-Finder",
-    live_link: "  ",
+    live_link: "https://metering-best-match-finder.vercel.app/",
   },
   {
     name: "Smart Nutrition System",
@@ -293,7 +293,7 @@ const projects = [
     ],
     image: nutrition,
     source_code_link: "https://github.com/Mohamed-Badr-Saad/nutrition-system",
-    live_link: "",
+    live_link: " ",
   },
 ];
 
