@@ -28,6 +28,7 @@ import {
   badrPics,
   bestMatchFinder,
   nutrition,
+  RASHPETCO_Instruments_Management_System,
 } from "../assets";
 
 export const navLinks = [
@@ -133,12 +134,8 @@ const technologies = [
     name: "figma",
     icon: figma,
   },
-  { name: "RESTful API",
-    icon: api,
-  },
-  { name: "Embedded Systems",
-    icon: Embedded,
-  },
+  { name: "RESTful API", icon: api },
+  { name: "Embedded Systems", icon: Embedded },
 ];
 
 const experiences = [
@@ -226,17 +223,18 @@ const projects = [
     live_link: "https://badr-picture.vercel.app",
   },
   {
-    name: "E-Commerce App",
+    name: "RASHPETCO Instruments Management System ",
     description:
-      "Responsive e-commerce web app built with React.js and Material-UI, featuring custom hooks, context API, and a tailored theme for optimized performance.",
+      "Full-stack app for managing calibration workflows, instruments, technicians, and engineers with role-based auth, PDF reports, and real-time data handling.",
     tags: [
       { name: "react", color: "blue-text-gradient" },
-      { name: "material-ui", color: "pink-text-gradient" },
-      { name: "context-api", color: "green-text-gradient" },
+      { name: "node.js", color: "green-text-gradient" },
+      { name: "mongodb", color: "pink-text-gradient" },
+      { name: "shadcn", color: "yellow-text-gradient" },
     ],
-    image: badrShop,
-    source_code_link: "https://github.com/Mohamed-Badr-Saad/e-commerce",
-    live_link: "https://e-commerce-eta-six-18.vercel.app",
+    image: RASHPETCO_Instruments_Management_System,
+    source_code_link: "https://github.com/Mohamed-Badr-Saad/calibration-tool",
+    live_link: "https://calibration-tool-five.vercel.app/",
   },
 
   {
@@ -253,17 +251,17 @@ const projects = [
     live_link: "https://recipe-finder-app-nu.vercel.app/",
   },
   {
-    name: "Smart Nutrition System",
+    name: "E-Commerce App",
     description:
-      "Multi-threaded nutrition management system with a Pistache RESTful API backend and a React.js frontend, integrating MongoDB for data storage.",
+      "Responsive e-commerce web app built with React.js and Material-UI, featuring custom hooks, context API, and a tailored theme for optimized performance.",
     tags: [
       { name: "react", color: "blue-text-gradient" },
-      { name: "pistache", color: "green-text-gradient" },
-      { name: "mongodb", color: "pink-text-gradient" },
+      { name: "material-ui", color: "pink-text-gradient" },
+      { name: "context-api", color: "green-text-gradient" },
     ],
-    image: nutrition,
-    source_code_link: "https://github.com/Mohamed-Badr-Saad/nutrition-system",
-    live_link:""
+    image: badrShop,
+    source_code_link: "https://github.com/Mohamed-Badr-Saad/e-commerce",
+    live_link: "https://e-commerce-eta-six-18.vercel.app",
   },
   {
     name: "Metering Best Match Finder",
@@ -277,7 +275,20 @@ const projects = [
     image: bestMatchFinder,
     source_code_link:
       "https://github.com/Mohamed-Badr-Saad/Metering-Best-Match-Finder",
-      live_link:"https://metering-best-match-finder.vercel.app"
+    live_link: "https://metering-best-match-finder.vercel.app",
+  },
+  {
+    name: "Smart Nutrition System",
+    description:
+      "Multi-threaded nutrition management system with a Pistache RESTful API backend and a React.js frontend, integrating MongoDB for data storage.",
+    tags: [
+      { name: "react", color: "blue-text-gradient" },
+      { name: "pistache", color: "green-text-gradient" },
+      { name: "mongodb", color: "pink-text-gradient" },
+    ],
+    image: nutrition,
+    source_code_link: "https://github.com/Mohamed-Badr-Saad/nutrition-system",
+    live_link: "",
   },
 ];
 

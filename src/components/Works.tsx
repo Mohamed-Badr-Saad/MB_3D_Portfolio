@@ -13,6 +13,7 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  live_link,
 }: {
   index: number;
   name: string;
@@ -20,6 +21,7 @@ const ProjectCard = ({
   tags: Array<{ name: string; color: string }>;
   image: string;
   source_code_link: string;
+  live_link: string;
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -45,6 +47,7 @@ const ProjectCard = ({
           }`}
           loading="lazy"
           onLoad={() => setImageLoaded(true)}
+          
         />
 
         <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
@@ -62,7 +65,9 @@ const ProjectCard = ({
       </div>
 
       <div className="mt-5">
-        <h3 className="text-white font-bold text-[24px]">{name}</h3>
+        <h3 className="text-white font-bold text-[24px] hover:underline cursor-pointer" 
+        
+        onClick={() => window.open(live_link, "_blank")}>{name}</h3>
         <p className="mt-2 text-secondary text-[14px]">{description}</p>
       </div>
 
