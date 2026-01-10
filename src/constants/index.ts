@@ -29,6 +29,7 @@ import {
   bestMatchFinder,
   nutrition,
   RASHPETCO_Instruments_Management_System,
+  nextjs,
 } from "../assets";
 
 export const navLinks = [
@@ -103,6 +104,11 @@ const technologies = [
     icon: reactjs,
   },
   {
+    name: "Next JS",
+    icon: nextjs,
+  },
+
+  {
     name: "Tailwind CSS",
     icon: tailwind,
   },
@@ -135,7 +141,6 @@ const technologies = [
     icon: figma,
   },
   { name: "RESTful API", icon: api },
-  { name: "Embedded Systems", icon: Embedded },
 ];
 
 const experiences = [

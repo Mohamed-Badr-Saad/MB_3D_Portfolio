@@ -99,6 +99,7 @@ export { default as appwrite } from "./tech/appwrite.png";
 export { default as mysql } from "./tech/mysql.png";
 export { default as express } from "./tech/express.png";
 export { default as sass } from "./tech/sass.png";
+export { default as nextjs } from "./tech/nextjs.svg";
 
 
 
