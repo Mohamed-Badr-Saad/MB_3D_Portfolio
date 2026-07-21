@@ -30,6 +30,7 @@ import {
   nutrition,
   RASHPETCO_Instruments_Management_System,
   nextjs,
+  DMS,
 } from "../assets";
 
 export const navLinks = [
@@ -213,6 +214,20 @@ const testimonials = [
 ];
 
 const projects = [
+    {
+    name: "Deferral Management System",
+    description:
+      "web app for managing company deferrals with multi-level approval workflows.",
+    tags: [
+      { name: "Next.Js", color: "blue-text-gradient" },
+      { name: "Tailwind CSS", color: "green-text-gradient" },
+      { name: "PostgreSQL", color: "pink-text-gradient" },
+      { name: " Better Auth", color: "yellow-text-gradient"},
+    ],
+    image: DMS,
+    source_code_link: "https://github.com/Mohamed-Badr-Saad/deferral-dms/tree/main",
+    live_link: " https://deferral-dms.vercel.app/",
+  },
   {
     name: "BadrPicture",
     description:
@@ -241,7 +256,6 @@ const projects = [
     source_code_link: "https://github.com/Mohamed-Badr-Saad/calibration-tool",
     live_link: "https://calibration-tool-five.vercel.app/",
   },
-
   {
     name: "Responsive Recipe Finder",
     description:
@@ -295,6 +309,7 @@ const projects = [
     source_code_link: "https://github.com/Mohamed-Badr-Saad/nutrition-system",
     live_link: " ",
   },
+
 ];
 
 export { services, technologies, experiences, testimonials, projects };
