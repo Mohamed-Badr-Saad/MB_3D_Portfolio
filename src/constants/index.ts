@@ -215,7 +215,7 @@ const testimonials = [
 
 const projects = [
     {
-    name: "Deferral Management System",
+    name: "Shell-JV Deferral Management System",
     description:
       "web app for managing company deferrals with multi-level approval workflows.",
     tags: [
