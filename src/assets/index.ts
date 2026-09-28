@@ -122,3 +122,4 @@ export { default as badrPics } from "./badrPics.png";
 export { default as nutrition } from "./nutrition.png";
 export { default as RASHPETCO_Instruments_Management_System } from "./RASHPETCO_Instruments_Management_System.png";
 export { default as DMS } from "./DMS.png";
+export { default as talie } from "./TalieLandingPage.png";
