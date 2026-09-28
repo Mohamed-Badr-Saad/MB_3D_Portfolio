@@ -231,7 +231,7 @@ const projects = [
     live_link: " https://deferral-dms.vercel.app/",
   },
   {
-    name: "•	Talié E-Commerce Platform",
+    name: "Talié E-Commerce Platform",
     description:
       "Modern fashion e-commerce app with product catalog, collections, cart, wishlist, customer accounts, order tracking, admin dashboard, inventory handling, and Paymob payment integration.",
     tags: [
