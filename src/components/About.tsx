@@ -1,84 +1,32 @@
-import { Tilt } from "react-tilt";
-import { motion } from "framer-motion";
-import { styles } from "../styles";
-import { services } from "../constants";
-import { SectionWrapper } from "../hoc";
-import { fadeIn, textVariant } from "../utils/motion";
-import { useState, useEffect } from "react";
+import { about, education } from "../data/content";
+import Section from "./Section";
+import Reveal from "./Reveal";
 
-const ServiceCard = ({ 
-  index, 
-  title, 
-  icon 
-}: { 
-  index: number; 
-  title: string; 
-  icon: string; 
-}) => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
-  }, []);
-
+export default function About() {
   return (
-    <Tilt 
-      className="xs:w-[250px] w-full"
-      options={{
-        max: isMobile ? 15 : 25,
-        scale: isMobile ? 1.02 : 1.1,
-        speed: isMobile ? 200 : 450,
-      }}
-    >
-      <motion.div
-        variants={fadeIn("right", "spring", index * (isMobile ? 0.3 : 0.5), 0.75)}
-        className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
-      >
-        <div className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
-          <img
-            src={icon}
-            alt="web-development"
-            className="w-16 h-16 object-contain"
-            loading="lazy"
-          />
-          <h3 className="text-white text-[20px] font-bold text-center">
-            {title}
-          </h3>
-        </div>
-      </motion.div>
-    </Tilt>
-  );
-};
+    <Section id="about">
+      <div className="grid gap-12 lg:grid-cols-12">
+        <Reveal className="lg:col-span-5">
+          <h2 className="heading text-[clamp(2rem,3.6vw,2.75rem)]">Between the field and the codebase</h2>
+          {about.paragraphs.map((p) => (
+            <p key={p} className="mt-5 max-w-[36rem] text-muted">
+              {p}
+            </p>
+          ))}
+          <p className="mt-5 max-w-[36rem] text-muted">
+            {education.degree}, Alexandria University, {education.year}. {education.grades}.
+          </p>
+        </Reveal>
 
-const About = () => {
-  return (
-    <>
-      <motion.div variants={textVariant(0.1)}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
-      </motion.div>
-
-      <motion.p
-        variants={fadeIn("", "spring", 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
-      >
-        I'm a skilled software developer with experience in TypeScript and
-        JavaScript, and expertise in frameworks like React, Node.js, and
-        Three.js. I'm a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let's work together to bring your ideas to life!
-      </motion.p>
-
-      <div className="mt-20 flex flex-wrap gap-10">
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
-        ))}
+        <dl className="divide-y divide-line border-y border-line lg:col-span-6 lg:col-start-7">
+          {about.focus.map((f, i) => (
+            <Reveal key={f.title} delay={i * 100} className="grid gap-2 py-7 sm:grid-cols-[11rem_1fr] sm:gap-8">
+              <dt className="heading text-[1.15rem]">{f.title}</dt>
+              <dd className="text-muted">{f.body}</dd>
+            </Reveal>
+          ))}
+        </dl>
       </div>
-    </>
+    </Section>
   );
-};
-
-
-
-const WrappedAbout = SectionWrapper(About, "about");
-export default WrappedAbout;
+}

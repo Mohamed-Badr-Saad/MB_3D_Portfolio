@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# Mohamed Badr — portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal site for Mohamed Badr, instrumentation & control engineer and full-stack developer.
+Live at https://mohamed-badr-nine.vercel.app/
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19, TypeScript, Vite, Tailwind CSS
+- React Three Fiber + drei for 3D, rendered through **one** fixed canvas with `<View>`s
+- EmailJS for the contact form
+- Self-hosted fonts: Archivo (variable width) and JetBrains Mono
 
-## Expanding the ESLint configuration
+## Editing content
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Text, experience, projects, education:** `src/data/content.ts`.
+- **Skills:** `src/data/skills.ts`. Each skill has a group, a keyboard shortcut, a ball size and a "used in" line.
+  Logos come from the `simple-icons` package.
+- **Skills style:** `SKILLS_MODE` at the top of `src/components/Skills.tsx` switches between `"orbit"` (current),
+  `"keyboard"` and `"balls"`. All three still work.
+- **Project details pop-up:** each project's `highlights` (and optional `gallery` screenshots) in `content.ts`.
+- **Monitor screens next to the robot:** the `screens` list in `content.ts`.
+- **CV download:** put your PDF in `public/` (e.g. `public/Mohamed_Badr_CV.pdf`) and set `profile.cv` to `"/Mohamed_Badr_CV.pdf"`.
+- **EmailJS keys:** optional `.env` overrides: `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY`.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 3D
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Everything three.js is in `src/three/` and loads lazily after the page has painted. One fixed canvas
+renders all scenes through drei `<View>`s.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `Robot.tsx`: the hero. Robot model by Quaternius (CC0), compressed with meshopt to 183 KB.
+  Hover to wave, click for emotes with a speech bubble, drag to spin; the head follows the cursor.
+  The floating monitor cycles project screenshots, and clicking it skips to the next one.
+- `SkillOrbit.tsx`: the skills orbit. Logo planets circle a glowing MB core, one ring per group.
+  Hover a planet to pause its ring, click it to fly the camera in, and drag empty space to turn the system.
+  Picking a group highlights its ring and makes it swell.
+- `SkillKeyboard.tsx` (backup): the skills keyboard. Each keycap is a skill. Hover lifts it, and clicking or typing its letter
+  presses it with a spring bounce. Keys rise in a wave when the section appears, and picking a group
+  "types" that group's keys. The spacebar jumps to Contact.
+- `SkillBalls.tsx` (backup): the skills ball pit. A small hand-written physics sim (gravity, walls,
+  ball-to-ball collisions, cursor pushing, grab and throw). Resting balls turn their logo to face you.
+- `Globe.tsx`: the draggable dotted globe in Contact. Land dots come from Natural Earth 110m (`landPoints.ts`).
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## Scripts
+
+```bash
+npm install
+npm run dev      # local dev server
+npm run build    # type-check + production build
+npm run lint
 ```

@@ -1,34 +1,23 @@
-// /** @type {import('tailwindcss').Config} */
-// export default {
-//   content: [],
-//   theme: {
-//     extend: {},
-//   },
-//   plugins: [],
-// }
-
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  mode: "jit",
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary: "#050816",
-        secondary: "#aaa6c3",
-        tertiary: "#151030",
-        "black-100": "#100d25",
-        "black-200": "#090325",
-        "white-100": "#f3f3f3",
+        ink: "#0D1726", // blueprint navy, page background
+        panel: "#122036", // raised surfaces
+        line: "#22344B", // drawing lines, borders
+        fg: "#DDE6EF", // primary text
+        muted: "#8EA1B6", // secondary text
+        live: "#3CCFB4", // only for live / ongoing values
+        amber: "#F2A93B", // primary action
       },
-      boxShadow: {
-        card: "0px 35px 120px -15px #211e35",
+      fontFamily: {
+        sans: ['"Archivo Variable"', "system-ui", "sans-serif"],
+        mono: ['"JetBrains Mono Variable"', "ui-monospace", "monospace"],
       },
-      screens: {
-        xs: "450px",
-      },
-      backgroundImage: {
-        "hero-pattern": "url('/src/assets/herobg.png')",
+      maxWidth: {
+        page: "76rem",
       },
     },
   },
