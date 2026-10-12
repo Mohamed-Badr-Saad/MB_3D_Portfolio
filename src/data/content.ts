@@ -20,7 +20,7 @@ export const profile = {
   github: "https://github.com/Mohamed-Badr-Saad",
   linkedin: "https://www.linkedin.com/in/mohamed-badr-95283b278",
   // Drop your CV into /public with this name and set the path to show the download button.
-  cv: null as string | null, // e.g. "/Mohamed_Badr_CV.pdf"
+  cv: "/Mohamed_Badr_resume_software.pdf" as string | null, // e.g. "/Mohamed_Badr_CV.pdf"
   revised: "Oct 2026",
 };
 
