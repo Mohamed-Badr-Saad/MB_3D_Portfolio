@@ -189,6 +189,7 @@ export const projectGroups: { title: string; note: string; items: Project[] }[] 
           "An installable web app for exploring the cause & effect charts of plant safety systems (ESD, F&G, BMS, vendor packages and subsea controls). Type any tag to see what it trips, what trips it, its set point and chart notes, and follow the trip chain across charts, on a desktop or on a phone, offline.",
         stack: ["React", "TypeScript", "Vite", "PWA", "IndexedDB", "Web Workers", "fflate"],
         image: ce3,
+        live: "https://cause-and-effect-tool.vercel.app/",
         internal: "Internal tool",
       },
       {
