@@ -13,7 +13,7 @@ const AMBER = "#F2A93B";
 
 // Click the robot to cycle through these. Each emote comes with a line in the speech bubble.
 const EMOTES: { clip: string; line: string; face?: "Surprised" | "Sad" | "Angry" }[] = [
-  { clip: "ThumbsUp", line: "15,981 shift handovers migrated, zero servers. Not bad, right?" },
+  { clip: "ThumbsUp", line: "21,000+ old Excel handovers migrated, and first sync went from 36 s to 2 s. Not bad, right?" },
   { clip: "Dance", line: "Next.js, React, Node, PostgreSQL... scroll down and press my keys." },
   { clip: "Jump", line: "Full-stack developer, and an instrumentation engineer too. Yes, both.", face: "Surprised" },
   { clip: "Yes", line: "Click the screen to flip through Badr's projects." },

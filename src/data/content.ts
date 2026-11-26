@@ -7,10 +7,31 @@ import recipeFinder from "../assets/projects/recipe-finder.webp";
 import bestMatch from "../assets/projects/best-match.webp";
 import shop from "../assets/projects/shop.webp";
 import nutrition from "../assets/projects/nutrition.webp";
-import hoDashboard from "../assets/handover/dashboard.webp";
-import hoList from "../assets/handover/handovers.webp";
-import hoDetail from "../assets/handover/handover-detail.webp";
-import hoEquipment from "../assets/handover/equipment.webp";
+import ho1 from "../assets/handover/01_plant-handover_overview.webp";
+import ho2 from "../assets/handover/02_plant-handover_install-and-roles.webp";
+import ho3 from "../assets/handover/03_plant-handover_import-names.webp";
+import ho4 from "../assets/handover/04_plant-handover_admin-delete.webp";
+import ho5 from "../assets/handover/05_plant-handover_shared-folder.webp";
+import pc1 from "../assets/PageCraft/PageCraft-1-start-screen.webp";
+import pc2 from "../assets/PageCraft/PageCraft-2-edit-pdf-text.webp";
+import pc3 from "../assets/PageCraft/PageCraft-3-sign.webp";
+import pc4 from "../assets/PageCraft/PageCraft-4-ocr-arabic.webp";
+import pc5 from "../assets/PageCraft/PageCraft-5-edit-scanned-page.webp";
+import pc6 from "../assets/PageCraft/PageCraft-6-phone.webp";
+import pc7 from "../assets/PageCraft/PageCraft-7-phone-pages.webp";
+import cams0 from "../assets/CAMS_Alarm_Explorer/0_cover.webp";
+import cams1 from "../assets/CAMS_Alarm_Explorer/1_alarms.webp";
+import cams2 from "../assets/CAMS_Alarm_Explorer/2_alarm_details.webp";
+import cams3 from "../assets/CAMS_Alarm_Explorer/3_statistics.webp";
+import cams4 from "../assets/CAMS_Alarm_Explorer/4_hma_view.webp";
+import cams5 from "../assets/CAMS_Alarm_Explorer/5_mobile_app.webp";
+// C&E Explorer screenshots have the plant's tags, descriptions and chart names blurred.
+import ce1 from "../assets/C&E_Explorer/ce-explorer-1-start.webp";
+import ce2 from "../assets/C&E_Explorer/ce-explorer-2-signal.webp";
+import ce3 from "../assets/C&E_Explorer/ce-explorer-3-trip-chain.webp";
+import ce4 from "../assets/C&E_Explorer/ce-explorer-4-matrix.webp";
+import ce5 from "../assets/C&E_Explorer/ce-explorer-5-blank-sheet.webp";
+import ce6 from "../assets/C&E_Explorer/ce-explorer-6-phone.webp";
 
 export const profile = {
   name: "Mohamed Badr",
@@ -53,7 +74,10 @@ export const about = {
 
 // Screens shown on the floating monitor next to the robot.
 export const screens = [
-  { name: "Plant Handover", src: hoDashboard },
+  { name: "PageCraft, a PDF editor that runs on your device", src: pc2 },
+  { name: "Plant Handover", src: ho1 },
+  { name: "CAMS Alarm Explorer", src: cams0 },
+  { name: "C&E Explorer", src: ce3 },
   { name: "the Deferral Management System", src: dms },
   { name: "Talié, a fashion store with Paymob payments", src: talie },
   { name: "the Instruments Management System", src: instruments },
@@ -89,7 +113,7 @@ export const experience: Job[] = [
     end: "Present",
     points: [
       "Member of the digitalization team, building internal applications that cut manual effort in engineering workflows.",
-      "Delivered the Deferral Management System, Instruments Management System, Metering Best Match Finder and Plant Handover.",
+      "Delivered the Deferral Management System, Instruments Management System, Metering Best Match Finder, Plant Handover and C&E Explorer.",
       "Troubleshoot and analyse control logic in distributed, safety-critical DCS/ESD systems.",
       "Work with industrial communication protocols and data-driven diagnostics.",
     ],
@@ -134,22 +158,37 @@ export type Project = {
 export const projectGroups: { title: string; note: string; items: Project[] }[] = [
   {
     title: "Plant & engineering tools",
-    note: "Built for Rashpetco engineering teams",
+    note: "Built for plant engineering teams",
     items: [
       {
         name: "Plant Handover",
         highlights: [
-          "Runs in Chrome or Edge straight from a folder: no server, nothing to install",
-          "Saves to a shared network folder through the browser's File System Access API",
-          "15,981 handovers imported from the old Excel sheets and searchable with the new ones",
-          "Every handover links to equipment tags, and each tag has its own history page",
-          "Filters, CSV export, comments, attachments, notifications and an admin area",
+          "Installable on Android and iPhone, with guided install steps, offline opening, camera photos, in-app notifications and update prompts",
+          "Managers' database protected by Postgres row-level security, plus admin tools: filtered delete (recoverable or permanent) with restore, shared-folder export/import and backups",
+          "Migrated 21,000+ old Excel handovers with automatic name matching and manual overrides, and made first sync about 18× faster (36 s → 2 s)",
         ],
-        gallery: [hoList, hoDetail, hoEquipment],
+        gallery: [ho2, ho3, ho4, ho5],
         summary:
-          "The instruments department's shift log. Runs in the browser with no server, saving to a shared folder, with 15,981 old Excel records imported.",
-        stack: ["Browser app", "File System Access API", "No server"],
-        image: hoDashboard,
+          "A shift-handover app for Rashpetco's Instruments (I&C) team. Engineers log handovers, follow-up actions, photos and comments against 3,000+ plant instrument tags. It installs on Android and iPhone and still opens with no signal. Managers also get their own private database.",
+        stack: ["JavaScript", "PWA (Service Worker, IndexedDB)", "Supabase (PostgreSQL, Auth, RLS, Storage)", "Cloudflare Workers", "SheetJS", "Playwright"],
+        image: ho1,
+        live: "https://handover-mobapp.badrm7103.workers.dev/",
+        internal: "Internal tool",
+      },
+      {
+        name: "C&E Explorer",
+        highlights: [
+          "Reads the plant's C&E workbooks in the browser, including charts converted from PDF, and links 38,000+ cause–effect marks into one searchable model. Nothing is uploaded.",
+          "Trip chain follows a signal across charts (confirmed fire → ESD level → shutdown valves → subsea wells) and exports the chain to Excel.",
+          "Smooth matrix view of charts up to 668 × 535, with code filters, pinned-cell readout and filtered export.",
+          "Installs on iPhone and Android as an app and works offline in the plant, with a layout built for phones.",
+          "\"Blank C&E sheet\" generates an Excel template in the importer's layout, so new package charts can be typed in and imported without changes.",
+        ],
+        gallery: [ce2, ce4, ce1, ce5, ce6],
+        summary:
+          "An installable web app for exploring the cause & effect charts of plant safety systems (ESD, F&G, BMS, vendor packages and subsea controls). Type any tag to see what it trips, what trips it, its set point and chart notes, and follow the trip chain across charts, on a desktop or on a phone, offline.",
+        stack: ["React", "TypeScript", "Vite", "PWA", "IndexedDB", "Web Workers", "fflate"],
+        image: ce3,
         internal: "Internal tool",
       },
       {
@@ -164,6 +203,21 @@ export const projectGroups: { title: string; note: string; items: Project[] }[] 
         image: dms,
         live: "https://deferral-dms.vercel.app/",
         code: "https://github.com/Mohamed-Badr-Saad/deferral-dms",
+      },
+      {
+        name: "CAMS Alarm Explorer",
+        highlights: [
+          "Loads 80,000+ alarms in seconds with virtual scrolling. Splits tag and alarm type from the source, shows current priority, mark color and setpoint, and works out \"Shown to operator\" from Detection + Enabled.In.Block. Rows are banded by tag, with filters, sorting, a full details panel and CSV/Excel export.",
+          "Statistics and a Highly Managed Alarms (HMA) view benchmarked against ISA-18.2: priority mix vs Table 6, operator response time vs time to event, priority changes and documentation completeness, with page references to the standard.",
+          "Installable PWA that works offline and keeps the last import on the device. The CAMS file is read locally and never uploaded.",
+        ],
+        gallery: [cams1, cams2, cams3, cams4, cams5],
+        summary:
+          "A web app that turns a Yokogawa CENTUM VP CAMS alarm export into a searchable alarm database with statistics. It makes alarm troubleshooting faster for engineers and gives operators a clear view of every tag's alarms, priorities, setpoints and whether each alarm actually reaches the operator. It works in any browser and installs as an app on Android and iPhone.",
+        stack: ["HTML", "CSS", "Vanilla JavaScript", "SheetJS", "IndexedDB", "PWA", "SVG charts", "Vercel"],
+        image: cams0,
+        live: "https://cams-tool.vercel.app/",
+        code: "https://github.com/Mohamed-Badr-Saad/CAMS_Tool",
       },
       {
         name: "Instruments Management System",
@@ -196,6 +250,21 @@ export const projectGroups: { title: string; note: string; items: Project[] }[] 
     title: "Web products",
     note: "Client and personal products",
     items: [
+      {
+        name: "PageCraft",
+        highlights: [
+          "Edits the PDF's own content, not an overlay. It rewrites the page's drawing instructions so changed text keeps the document's original font, and images are moved or replaced without quality loss.",
+          "On-device OCR for English and Arabic, including Arabic letter-joining and right-to-left text. When you edit a scanned line, the new words match the scan's ink colour and boldness, and the old words are hidden under a patch made from the surrounding paper.",
+          "One codebase on three platforms: a web app, an installable phone app with touch gestures, and an offline desktop app that opens PDFs straight from File Explorer. Files never leave the device.",
+        ],
+        gallery: [pc5, pc4, pc3, pc1, pc6, pc7],
+        summary:
+          "A free PDF editor that runs entirely on your device: edit a PDF's existing text and images, sign, comment, read scanned pages in English and Arabic, and organize pages, with no upload and no account. It works in the browser, installs as a phone app, and ships as an offline Windows program.",
+        stack: ["React 19", "TypeScript", "Vite", "Zustand", "pdf.js", "pdf-lib + fontkit", "Tesseract.js", "PWA", "Electron", "Playwright", "GitHub Pages"],
+        image: pc2,
+        live: "https://mohamed-badr-saad.github.io/PDF_Editor/",
+        code: "https://github.com/Mohamed-Badr-Saad/PDF_Editor",
+      },
       {
         name: "Talié",
         highlights: [

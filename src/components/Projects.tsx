@@ -8,7 +8,15 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 
 type Item = { p: Project; group: string };
 // Display order: these first, then everything else in its group order.
-const FIRST = ["Talié", "Deferral Management System", "Instruments Management System", "Plant Handover"];
+const FIRST = [
+  "PageCraft",
+  "Talié",
+  "Deferral Management System",
+  "CAMS Alarm Explorer",
+  "Instruments Management System",
+  "Plant Handover",
+  "C&E Explorer",
+];
 const rank = (name: string) => (FIRST.includes(name) ? FIRST.indexOf(name) : FIRST.length);
 const all: Item[] = projectGroups
   .flatMap((g) => g.items.map((p) => ({ p, group: g.title })))
