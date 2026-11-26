@@ -10,8 +10,8 @@ type Item = { p: Project; group: string };
 // Display order: these first, then everything else in its group order.
 const FIRST = [
   "Talié",
-  "PageCraft",
   "Deferral Management System",
+  "PageCraft",
   "CAMS Alarm Explorer",
   "Instruments Management System",
   "Plant Handover",
