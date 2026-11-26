@@ -9,8 +9,8 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 type Item = { p: Project; group: string };
 // Display order: these first, then everything else in its group order.
 const FIRST = [
-  "PageCraft",
   "Talié",
+  "PageCraft",
   "Deferral Management System",
   "CAMS Alarm Explorer",
   "Instruments Management System",

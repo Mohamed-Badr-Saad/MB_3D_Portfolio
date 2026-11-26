@@ -277,7 +277,7 @@ export const projectGroups: { title: string; note: string; items: Project[] }[] 
         summary: "Fashion e-commerce with catalogue, cart, wishlist, accounts, order tracking, admin dashboard, inventory and Paymob payments.",
         stack: ["Next.js 16", "Prisma", "PostgreSQL / Supabase", "Paymob"],
         image: talie,
-        live: "https://talie-ecommerce.vercel.app/",
+        live: "https://talie.store/",
         code: "https://github.com/Mohamed-Badr-Saad/Ecommerce",
       },
       {
